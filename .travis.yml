@@ -7,8 +7,6 @@ sudo: false
 
 # Install ansible
 addons:
-#  ssh_known_hosts: 
-#    - localhost
   apt:
     packages:
     - python-pip
@@ -25,9 +23,11 @@ install:
 
 script:
   # Basic role syntax check
-  - ansible-playbook tests/test.yml --syntax-check
-  - ansible-playbook tests/test.yml -C
-  - ansible-playbook tests/test.yml 
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+  # Run playbook in dry-run mode
+  - ansible-playbook tests/test.yml -i tests/inventory -C
+  # Run playbook
+  - ansible-playbook tests/test.yml -i tests/inventory
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
