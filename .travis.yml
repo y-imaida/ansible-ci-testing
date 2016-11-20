@@ -7,8 +7,8 @@ sudo: false
 
 # Install ansible
 addons:
-  ssh_known_hosts: 
-    - localhost
+#  ssh_known_hosts: 
+#    - localhost
   apt:
     packages:
     - python-pip
